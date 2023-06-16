@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\StudentController;
@@ -42,6 +43,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/privet', [UserController::class, 'privet'])->name('privet');
     Route::get('/firm', [UserController::class, 'firm'])->name('firm');
     Route::get('/student', [StudentController::class, 'index'])->name('student');
+});
+
+Route::prefix('admin')->group(function (){
+    Route::get('/login',[AdminController::class, 'index'])->name('login_from');
+    Route::get('/login/owner',[AdminController::class, 'login'])->name('admin.login');
+    Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('admin.dashboard');
 });
 
 require __DIR__.'/auth.php';
