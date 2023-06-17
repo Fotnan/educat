@@ -24,6 +24,15 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
 
+            @if(\Illuminate\Support\Facades\Session::has('error'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{\Illuminate\Support\Facades\Session::get('error')}}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+
             <form action="../../index3.html" method="post">
                 <div class="input-group mb-3">
                     <input type="email" class="form-control" placeholder="Email">
