@@ -14,4 +14,8 @@ class AdminController extends Controller
     public function dashboard(){
         return view('admin.index');
     }
+
+    public function login(Request $request){
+        dd($request);
+    }
 }
