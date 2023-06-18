@@ -24,20 +24,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/dashboard', function () {
-// return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+ return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-//Route::middleware(['auth', 'verified'])->group(function () {
-// Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-//});
+Route::middleware(['auth', 'verified'])->group(function () {
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 Route::prefix('admin')->group(function (){
     Route::get('/login',[AdminController::class, 'index'])->name('login_from');
     Route::post('/login/owner',[AdminController::class, 'login'])->name('admin.login');
     Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('admin');
+    Route::get('/logout',[AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware('admin');
+    Route::get('/register',[AdminController::class, 'AdminRegister'])->name('admin.register');
+    Route::post('/register/create',[AdminController::class, 'AdminRegisterCreate'])->name('admin.register.create');
+
     Route::get('/', [MainController::class, 'index'])->name('admin.index');
     Route::resource('/articles', ArticleController::class);
     Route::resource('/tailes', TailController::class);
