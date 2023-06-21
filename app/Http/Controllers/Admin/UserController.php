@@ -53,7 +53,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        $user = User::find($user);
+
+        return view('admin.users.show', compact('user'));
     }
 
     /**

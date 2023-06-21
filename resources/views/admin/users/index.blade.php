@@ -87,6 +87,9 @@
                                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                             colspan="1" aria-label="CSS grade: activate to sort column ascending">E-mail менеджера
                                         </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                            colspan="1" aria-label="CSS grade: activate to sort column ascending">Дейстия
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -106,6 +109,7 @@
                                         <td>{{$user->manager_first}} {{$user->manager_last}}</td>
                                         <td>{{$user->manager_phone}}</td>
                                         <td>{{$user->manager_mail}}</td>
+                                        <td><a href="{{ route('users.show', ['user' => $user->id]) }}"><button type="submit" class="btn btn-block btn-info">Student</button></a></td>
                                     </tr>
                                     @endforeach
                                     </tbody>
@@ -125,6 +129,7 @@
                                         <th rowspan="1" colspan="1">Имя менеджера</th>
                                         <th rowspan="1" colspan="1">Тел. менеджера</th>
                                         <th rowspan="1" colspan="1">E-mail менеджера</th>
+                                        <th rowspan="1" colspan="1">Действия</th>
                                     </tr>
                                     </tfoot>
                                 </table>
